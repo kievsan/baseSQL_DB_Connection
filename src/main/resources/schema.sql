@@ -1,11 +1,11 @@
-create schema db3 authorization postgres;
+create schema if not exists orders.db3 authorization postgres;
 
 create table if not exists db3.customers (
     id serial primary key ,
     name varchar(20) not null ,
     surname varchar(30) not null ,
     age int not null ,
-    phone_number bigint
+    phone_number varchar(12)
 );
 
 create table if not exists db3.orders (

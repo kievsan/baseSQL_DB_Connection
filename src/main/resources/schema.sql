@@ -1,4 +1,4 @@
-create schema if not exists orders.db3 authorization postgres;
+create schema if not exists db3 authorization postgres;
 
 create table if not exists db3.customers (
     id serial primary key ,

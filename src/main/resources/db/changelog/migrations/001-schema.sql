@@ -1,4 +1,4 @@
-create schema if not exists orders.db3 authorization postgres;
+create schema if not exists db3 authorization postgres;
 
 create table if not exists db3.customers (
     id serial primary key ,
@@ -9,10 +9,10 @@ create table if not exists db3.customers (
 );
 
 insert into db3.customers (name, surname, age, phone_number)
-VALUES ('Вася', 'Пупкин', 20, 9614005530),
-       ('Сеня', 'Гоцман', 43, 9223334455),
-       ('alexey', 'Ред', 30, 9376584421),
-       ('Serg', 'Green', 33, 9216320122);
+VALUES ('Вася', 'Пупкин', 20, '+79614005530'),
+       ('Сеня', 'Гоцман', 43, '+79223334455'),
+       ('alexey', 'Ред', 30, '+79376584421'),
+       ('Serg', 'Green', 33, '+79216320122');
 
 create table if not exists db3.orders (
     id serial primary key ,

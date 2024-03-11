@@ -14,7 +14,7 @@ import java.util.Map;
 @Repository
 public class OrdersRepoImpl implements OrdersRepo {
 
-    private final String sqlQuery = SqlReader.read("/sql_queries/namedQuery01_CustomerNameByProductName.sql");
+    private final String sqlQuery = SqlReader.read("./sql_queries/namedQuery01_CustomerNameByProductName.sql");
     private final NamedParameterJdbcTemplate jdbc;
 
     // Внедрение bean, созданного Spring Boot для работы с сохраненными данными:

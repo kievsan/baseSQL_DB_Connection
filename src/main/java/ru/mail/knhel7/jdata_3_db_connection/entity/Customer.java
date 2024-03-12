@@ -1,18 +1,17 @@
 package ru.mail.knhel7.jdata_3_db_connection.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@ToString
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "customers")
 @Entity
 public class Customer implements Serializable {
@@ -31,5 +30,6 @@ public class Customer implements Serializable {
     private String phone;
 
     @OneToMany (mappedBy="customers", fetch=FetchType.EAGER)
+    @ToString.Exclude
     private List<Order> orderList;
 }

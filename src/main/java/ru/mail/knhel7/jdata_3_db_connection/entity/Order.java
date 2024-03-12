@@ -1,18 +1,17 @@
 package ru.mail.knhel7.jdata_3_db_connection.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
+@ToString
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "orders")
 @Entity
 public class Order implements Serializable {
@@ -32,6 +31,7 @@ public class Order implements Serializable {
 
     @ManyToOne (optional=false, cascade=CascadeType.ALL)
     @JoinColumn (name="order_id")
+    @ToString.Exclude
     private Customer customer_id;
 
     @PrePersist

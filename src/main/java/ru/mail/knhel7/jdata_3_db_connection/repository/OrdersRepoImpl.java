@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
+import ru.mail.knhel7.jdata_3_db_connection.entity.Order;
 import ru.mail.knhel7.jdata_3_db_connection.model.Product;
 
 //import org.springframework.jdbc.core.RowMapper;
@@ -40,9 +41,11 @@ public class OrdersRepoImpl implements OrdersRepo {
     public List<Product> getProductName(String name) {
         var query = manager.createQuery("SELECT orderList FROM Customer c WHERE lower(c.name) = lower(:name)");
         query.setParameter("name", name);
-        var orders = query.getResultList();
+        List<Order> orders = query.getResultList();
 
-        return null;
+        return orders.stream()
+                .map(order -> new Product(order.getProduct_name()))
+                .toList();
     }
 
 }

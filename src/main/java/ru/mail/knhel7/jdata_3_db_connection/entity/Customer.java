@@ -30,7 +30,7 @@ public class Customer implements Serializable {
     @Column(name = "phone_number", length = 12, nullable = false)
     private String phone;
 
-    @OneToMany (mappedBy="customer_id", fetch=FetchType.EAGER)
+    @OneToMany (mappedBy="order", fetch=FetchType.EAGER)
     @ToString.Exclude
     private List<Order> orderList;
 
@@ -39,12 +39,12 @@ public class Customer implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return getAge() == customer.getAge() && Objects.equals(getId(),
-                customer.getId()) && Objects.equals(getName(),
-                customer.getName()) && Objects.equals(getSurname(),
-                customer.getSurname()) && Objects.equals(getPhone(),
-                customer.getPhone()) && Objects.equals(getOrderList(),
-                customer.getOrderList());
+        return getAge() == customer.getAge() &&
+                Objects.equals(getId(), customer.getId()) &&
+                Objects.equals(getName(), customer.getName()) &&
+                Objects.equals(getSurname(), customer.getSurname()) &&
+                Objects.equals(getPhone(), customer.getPhone()) &&
+                Objects.equals(getOrderList(), customer.getOrderList());
     }
 
     @Override

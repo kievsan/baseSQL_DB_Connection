@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -37,5 +38,22 @@ public class Order implements Serializable {
     @PrePersist
     protected void onCreate() {
         date = new Date();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return getAmount() == order.getAmount() && Objects.equals(getId(),
+                order.getId()) && Objects.equals(getDate(),
+                order.getDate()) && Objects.equals(getProduct_name(),
+                order.getProduct_name()) && Objects.equals(getCustomer_id(),
+                order.getCustomer_id());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getDate());
     }
 }

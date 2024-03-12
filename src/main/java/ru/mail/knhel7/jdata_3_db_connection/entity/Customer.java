@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -32,4 +33,22 @@ public class Customer implements Serializable {
     @OneToMany (mappedBy="customers", fetch=FetchType.EAGER)
     @ToString.Exclude
     private List<Order> orderList;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return getAge() == customer.getAge() && Objects.equals(getId(),
+                customer.getId()) && Objects.equals(getName(),
+                customer.getName()) && Objects.equals(getSurname(),
+                customer.getSurname()) && Objects.equals(getPhone(),
+                customer.getPhone()) && Objects.equals(getOrderList(),
+                customer.getOrderList());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
 }

@@ -30,7 +30,7 @@ public class Customer implements Serializable {
     @Column(name = "phone_number", length = 12, nullable = false)
     private String phone;
 
-    @OneToMany (mappedBy="order", fetch=FetchType.EAGER)
+    @OneToMany (mappedBy="customer", fetch=FetchType.EAGER)
     @ToString.Exclude
     private List<Order> orderList;
 

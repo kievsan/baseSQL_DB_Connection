@@ -42,7 +42,7 @@ public class OrdersRepoImpl implements OrdersRepo {
         var query = manager.createQuery("SELECT orderList FROM Customer c WHERE lower(c.name) = lower(:name)");
         query.setParameter("name", name);
         List<Order> orders = query.getResultList();
-        System.out.println(orders);
+        System.out.println(name + ": " + orders);
         return orders.stream()
                 .map(order -> new Product(order.getProduct_name()))
                 .toList();

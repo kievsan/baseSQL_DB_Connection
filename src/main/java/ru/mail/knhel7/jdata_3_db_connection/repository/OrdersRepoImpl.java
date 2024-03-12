@@ -2,16 +2,17 @@ package ru.mail.knhel7.jdata_3_db_connection.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import ru.mail.knhel7.jdata_3_db_connection.model.Product;
-import ru.mail.knhel7.jdata_3_db_connection.util.SqlReader;
 
-import java.util.HashMap;
+//import org.springframework.jdbc.core.RowMapper;
+//import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+//import ru.mail.knhel7.jdata_3_db_connection.util.SqlReader;
+//import java.util.HashMap;
+//import java.util.Map;
+
 import java.util.List;
-import java.util.Map;
 
 @Repository
 public class OrdersRepoImpl implements OrdersRepo {
@@ -37,7 +38,9 @@ public class OrdersRepoImpl implements OrdersRepo {
 
     @Override
     public List<Product> getProductName(String name) {
-
+        var query = manager.createQuery("SELECT orderList FROM Customer c WHERE lower(c.name) = lower(:name)");
+        query.setParameter("name", name);
+        var orders = query.getResultList();
 
         return null;
     }
